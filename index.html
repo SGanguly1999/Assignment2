@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Numbers</title>
+    <style>
+      img {
+        padding: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Image to be displayed here :</h2>
+    <div style="height: 120px" id="disp"></div>
+    <br />
+    <input type="text" />
+
+    <script type="text/javascript">
+      count = 0;
+      document.querySelector("input").addEventListener("keypress", function (event) {
+          val = parseInt(event.key);
+          console.log(val);
+
+          t = setInterval(displayNumbers, 1000);
+        });
+      function displayNumbers() {
+        var p = document.getElementById("disp");
+        if (count == val) {
+          clearInterval(t);
+        }
+	if(count<val) {
+        var c = document.createElement("IMG");
+        var num = count +1;
+        c.id=" "+num;
+        c.src = "fig-" + num + ".jpg";
+        c.height = "100";
+        c.width = "100";
+        p.appendChild(c);
+        count++;
+        }
+	else if(count>val) {
+        var num = count;
+        p.removeChild(document.getElementById(" "+num));
+	count--;
+        }
+      }
+    </script>
+  </body>
+</html>
